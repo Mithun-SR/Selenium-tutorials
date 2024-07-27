@@ -30,4 +30,9 @@ public class CheckOutModule {
     public void fillCheckOutPageParameters(JsonPath testData) throws InterruptedException {
         checkOutPage.fillCheckOutPageParameters(testData);
     }
+
+    public void fillCreditCardDetails(JsonPath testData) throws InterruptedException {
+        checkOutPage.fillCreditCardDetails(testData);
+    }
 }
+

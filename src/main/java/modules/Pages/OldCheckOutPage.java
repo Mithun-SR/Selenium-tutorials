@@ -20,5 +20,10 @@ public class OldCheckOutPage extends CheckOutPage{
 
     }
 
+    @Override
+    public void fillCreditCardDetails(JsonPath testData) {
+
+    }
+
 
 }

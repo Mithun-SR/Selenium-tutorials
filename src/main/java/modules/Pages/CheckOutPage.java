@@ -8,5 +8,7 @@ public abstract class CheckOutPage {
 
    public abstract void fillCheckOutPageParameters(JsonPath testData) throws InterruptedException;
 
+   public abstract void fillCreditCardDetails( JsonPath testData) throws InterruptedException;
+
 
 }

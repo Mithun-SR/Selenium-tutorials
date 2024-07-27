@@ -4,9 +4,6 @@ import io.restassured.path.json.JsonPath;
 import libs.WebDriverActions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.interactions.Actions;
-
-import javax.swing.*;
 
 public class NewDetailsPage extends DetailsPage{
     WebDriverActions actions;
@@ -15,8 +12,10 @@ public class NewDetailsPage extends DetailsPage{
     }
 
     static private final By BOOK = By.cssSelector("[data-ody-id='BookButton']");
-    static private final By GUEST_1 = By.xpath("(//input[@type='number'])[1]");
-    static private final By GUEST_2 = By.xpath("(//input[@type='number'])[2]");
+    static private final By GUEST_COUNT = By.xpath("//span[@data-ody-id='GuestCount']//span");
+    static private final By ADD = By.xpath("//button[@data-ody-id='GuestIncreaseCount']");
+    static private final By DELETE = By.xpath("//button[@data-ody-id='GuestDecreaseCount']");
+    static private final String GUEST = "(//input[@type='number'])[%d]";
     static private final By CONTINUE_1 = By.xpath("(//button[@data-ody-id='ContinueButton'])[1]");
     static private final By CONTINUE_2 = By.xpath("(//button[@data-ody-id='ContinueButton'])[3]");
     static private final By CONTINUE_3 = By.xpath("//button[@data-ody-id='ContinueToBookingButton']");
@@ -35,16 +34,22 @@ public class NewDetailsPage extends DetailsPage{
         actions.waitForElementToBeVisible(BOOK);
         actions.waitForElementToBeClickable(BOOK);
         actions.click(BOOK);
-        actions.waitForElementToBePresent(GUEST_1);
-        actions.waitForElementToBePresent(GUEST_2);
-        actions.waitForElementToBeVisible(GUEST_1);
-        actions.waitForElementToBeVisible(GUEST_2);
+        actions.waitForElementToBePresent(By.xpath(String.format(GUEST,1)));
+        actions.waitForElementToBeVisible(By.xpath(String.format(GUEST,1)));
+
     }
 
     @Override
     public void fillDetailsPageParameters(JsonPath jsonPath) {
-        actions.type(GUEST_1,jsonPath.getString("detailsPage.guestAge[0]"));
-        actions.type(GUEST_2,jsonPath.getString("detailsPage.guestAge[1]"));
+        while (Integer.parseInt(actions.getWebDriver().findElement(GUEST_COUNT).getText())!=Integer.parseInt(jsonPath.getString("detailsPage.numberOfGuests"))) {
+            if (Integer.parseInt(actions.getWebDriver().findElement(GUEST_COUNT).getText()) < Integer.parseInt(jsonPath.getString("detailsPage.numberOfGuests")))
+                actions.click(ADD);
+            else if (Integer.parseInt(actions.getWebDriver().findElement(GUEST_COUNT).getText()) > Integer.parseInt(jsonPath.getString("detailsPage.numberOfGuests")))
+                actions.click(DELETE);
+        }
+        for (int i = 0; i<Integer.parseInt(jsonPath.getString("detailsPage.numberOfGuests")); i++){
+            actions.type(By.xpath(String.format(GUEST,(i+1))),jsonPath.getString("detailsPage.guestAge["+i+"]"));
+        }
         actions.click(CONTINUE_1);
         actions.sleep(1);
         actions.click(COUNTRY);

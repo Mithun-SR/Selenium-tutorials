@@ -1,10 +1,11 @@
 {
   "valid": {
-    "Royal Caribbean": {
+    "Royal": {
       "cardHolderName": "Monish Luthra",
       "cardNumber": "3387751111111111",
+      "creditCardType": "Visa",
       "cvv": "123",
-      "expiryMonth": "06",
+      "expiryMonth": "Jun",
       "expiryYear": "2025",
       "address": {
         "Street": "Koramangala 8th Block, Bengaluru",
@@ -17,8 +18,9 @@
     "Norwegian": {
       "cardHolderName": "Monish Luthra",
       "cardNumber": "3111111111111111",
+      "creditCardType": "Visa",
       "cvv": "123",
-      "expiryMonth": "06",
+      "expiryMonth": "Jun",
       "expiryYear": "2025",
       "address": {
         "Street": "Koramangala 8th Block, Bengaluru",
@@ -33,7 +35,7 @@
     "cardHolderName": "Sachin Kn",
     "cardNumber": "0123456789111213",
     "cvv": "000",
-    "expiryMonth": "06",
+    "expiryMonth": "Jun",
     "expiryYear": "2025",
     "address": {
       "Street": "Koramangala 8th Block, Bengaluru",

@@ -12,6 +12,7 @@ public class NewCategoryPage extends CategoryPage{
     }
 
     private static final By BOOK = By.xpath("(//div[@id='category_price_content_1']//a[@data-ody-id='BookNowButton'])[last()]");
+    static private final By CONTINUE = By.xpath("(//a[@onclick='SubmitSelection()'])[last()]");
     static private final By CABIN_PAGE = By.xpath("//li[@class='nav-item  active-nav-item']//*[normalize-space()='Staterooms']");
 
     @Override
@@ -24,6 +25,15 @@ public class NewCategoryPage extends CategoryPage{
     @Override
     public void clickBookButton() {
         actions.click(BOOK);
+        try {
+            actions.waitForElementToBePresent(CONTINUE);
+            actions.waitForElementToBeVisible(CONTINUE);
+            actions.click(CONTINUE);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+
     }
 
 

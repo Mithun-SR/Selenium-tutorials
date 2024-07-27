@@ -82,6 +82,7 @@ public class CruiseFlowTests extends BaseTest {
         checkOutModule.waitForPageToLoad(packageObject);
         ReporterUtils.writeStatusToReportWithMsg(Status.PASS,"Checkout page loaded");
         checkOutModule.fillCheckOutPageParameters(testData);
+        checkOutModule.fillCreditCardDetails(testData);
     }
     @Test(testName = "Cruise Flow Full Payment Test", dataProvider = "genericDataProvider", groups = {"Id-01", "smoke"})
     @Parameters(value = {"cruise", "fullPayment"})
@@ -150,6 +151,8 @@ public class CruiseFlowTests extends BaseTest {
     @Test(testName = "Cruise Flow Deposit Payment Test", dataProvider = "genericDataProvider", groups = {"Id-02", "smoke"})
     @Parameters(value = {"cruise", "depositPayment"})
     public void cruiseFlowDepositPaymentTest(WebDriverActions actions, JsonPath testData) {
+            System.out.println(System.getProperty("name"));
+
 
     }
 

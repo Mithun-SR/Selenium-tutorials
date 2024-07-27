@@ -55,6 +55,7 @@ public class WebDriverActions {
                 .until(ExpectedConditions.elementToBeClickable(locator));
     }
 
+
     public void openUrl(String url) {
         if (driver == null) {
             System.setProperty("webdriver.chrome.driver", "E:/its_me/Software_Apps/chromedriver.exe");

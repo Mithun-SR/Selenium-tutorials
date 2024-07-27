@@ -24,8 +24,14 @@ public class OldCategoryPage extends CategoryPage{
     @Override
     public void clickBookButton() {
         actions.click(BOOK);
-        if (actions.getWebDriver().findElement(CONTINUE)!=null)
+        try {
+            actions.waitForElementToBePresent(CONTINUE);
+            actions.waitForElementToBeVisible(CONTINUE);
             actions.click(CONTINUE);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
 
