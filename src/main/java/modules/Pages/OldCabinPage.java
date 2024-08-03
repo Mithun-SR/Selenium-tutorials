@@ -10,7 +10,7 @@ public class OldCabinPage extends CabinPage{
         this.actions = actions;
     }
 
-    static private final By Book = By.xpath("(//a[@class='booknow primary-btn'])[last()]");
+    static private final By Book = By.xpath("(//a[@class='booknow primary-btn'])[1]");
 
 
     @Override
